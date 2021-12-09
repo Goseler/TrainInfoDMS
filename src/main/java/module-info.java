@@ -6,5 +6,5 @@ module ssu.edu.ua.traininfodms {
 
     opens ssu.edu.ua.traininfodms to javafx.fxml;
     exports ssu.edu.ua.traininfodms;
-    exports ssu.edu.ua.traininfodms.controller;
+    exports ssu.edu.ua.traininfodms.Controllers;
 }
