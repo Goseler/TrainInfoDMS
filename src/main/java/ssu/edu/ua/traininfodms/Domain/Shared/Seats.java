@@ -5,7 +5,8 @@ public class Seats {
     private int SecondClass;
     private int ThirdClass;
 
-    public Seats(){};
+    public Seats(){}
+
     public Seats(int firstClass, int secondClass, int thirdClass){
         FirstClass = firstClass;
         SecondClass = secondClass;

@@ -1,11 +1,12 @@
 package ssu.edu.ua.traininfodms.Models;
 
+import org.bson.types.ObjectId;
 import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
 
 import java.util.UUID;
 
 public class TrainInfoDto {
-    private UUID Id;
+    private ObjectId Id;
     private String Destination;
     private String TrainNumber;
     private int DeptHour;
@@ -13,7 +14,7 @@ public class TrainInfoDto {
 
     public TrainInfoDto(){}
 
-    public TrainInfoDto (UUID id, String destination, String trainNumber, int deptHour, SeatsDto seatsDto){
+    public TrainInfoDto (ObjectId id, String destination, String trainNumber, int deptHour, SeatsDto seatsDto){
         Id = id;
         Destination = destination;
         TrainNumber = trainNumber;
@@ -22,10 +23,10 @@ public class TrainInfoDto {
     }
 
     // Getters and Setters
-    public UUID getId() {
+    public ObjectId getId() {
         return Id;
     }
-    public void setId(UUID id) {
+    public void setId(ObjectId id) {
         Id = id;
     }
 

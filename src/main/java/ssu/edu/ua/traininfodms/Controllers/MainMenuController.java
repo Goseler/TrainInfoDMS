@@ -1,25 +1,23 @@
 package ssu.edu.ua.traininfodms.Controllers;
 
-import javafx.collections.FXCollections;
-import javafx.scene.control.TableView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
-import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
-import ssu.edu.ua.traininfodms.Models.SeatsDto;
+import ssu.edu.ua.traininfodms.Domain.AppTrainInfo;
+import ssu.edu.ua.traininfodms.Domain.ITrainRepository;
 import ssu.edu.ua.traininfodms.Models.TrainInfoDto;
-import ssu.edu.ua.traininfodms.Views.AddTrainTrip;
+import ssu.edu.ua.traininfodms.MongoDb.MongoDbContext;
+import ssu.edu.ua.traininfodms.MongoDb.MongoDbTrainRepository;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class MainMenuController {
-    private ArrayList<TrainInfoDto> list = new ArrayList<>();
+    private ArrayList<AppTrainInfo> list;
+    private ITrainRepository _trainRepository;
 
     public MainMenuController() {
-        list.add(new TrainInfoDto(UUID.randomUUID(), "Sumy", "L-256", 15, new SeatsDto(new Seats(5, 7, 9))));
-        FXCollections.observableArrayList(list);
+        MongoDbContext.Connect();
+        _trainRepository = new MongoDbTrainRepository();
+        list = _trainRepository.getTrainInfoList();
     }
 
     // Event actions

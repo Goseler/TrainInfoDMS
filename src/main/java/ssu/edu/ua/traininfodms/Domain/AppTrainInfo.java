@@ -1,51 +1,69 @@
 package ssu.edu.ua.traininfodms.Domain;
 
+import org.bson.BsonType;
+import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.codecs.pojo.annotations.BsonRepresentation;
+import org.bson.types.ObjectId;
 import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
-
-import java.util.UUID;
 
 // Domain class
 public class AppTrainInfo {
-    private UUID Id;
-    private String Destination;
-    private String TrainNumber;
-    private int DeptHour;
-    private Seats Seats;
+    @BsonId()
+    @BsonRepresentation(BsonType.OBJECT_ID)
+    private ObjectId id;
+    private String destination;
+    private String trainNumber;
+    private int deptHour;
+    private Seats seats;
+
+    public AppTrainInfo() {
+    }
+
+    public AppTrainInfo(String destination, String trainNumber, int deptHour, Seats seats) {
+        this.destination = destination;
+        this.trainNumber = trainNumber;
+        this.deptHour = deptHour;
+        this.seats = seats;
+    }
 
     // Getters and Setters
-    public UUID getId() {
-        return Id;
+    public ObjectId getId() {
+        return id;
     }
-    public void setId(UUID id) {
-        Id = id;
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getDestination() {
-        return Destination;
+        return destination;
     }
+
     public void setDestination(String destination) {
-        Destination = destination;
+        this.destination = destination;
     }
 
     public String getTrainNumber() {
-        return TrainNumber;
+        return trainNumber;
     }
 
     public void setTrainNumber(String trainNumber) {
-        TrainNumber = trainNumber;
+        this.trainNumber = trainNumber;
     }
 
     public int getDeptHour() {
-        return DeptHour;
+        return deptHour;
     }
+
     public void setDeptHour(int deptHour) {
-        DeptHour = deptHour;
+        this.deptHour = deptHour;
     }
 
     public Seats getSeats() {
-        return Seats;
+        return seats;
     }
+
     public void setSeats(Seats seats) {
-        Seats = seats;
+        this.seats = seats;
     }
 }
