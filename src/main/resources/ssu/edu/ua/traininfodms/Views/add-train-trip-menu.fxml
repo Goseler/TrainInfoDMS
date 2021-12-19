@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane prefHeight="190.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ssu.edu.ua.traininfodms.Controllers.AddMenuController">
+    <children>
+        <AnchorPane layoutX="14.0" layoutY="164.0" />
+        <TextField fx:id="destTextField" layoutX="17.0" layoutY="90.0" onKeyReleased="#onDestinationTextFieldChanged" prefHeight="25.0" prefWidth="104.0" promptText="Sumy" />
+        <TextField fx:id="trainNumberTextField" layoutX="150.0" layoutY="90.0" onKeyReleased="#onTrainNumberTextFieldChanged" prefHeight="25.0" prefWidth="71.0" promptText="YY-XXX" />
+        <TextField fx:id="deptHourTextField" accessibleRole="INCREMENT_BUTTON" layoutX="272.0" layoutY="90.0" onKeyReleased="#onDeptHourTextFieldChanged" prefHeight="25.0" prefWidth="30.0" promptText="24" />
+        <TextField fx:id="firstClassTextField" layoutX="340.0" layoutY="90.0" onKeyReleased="#onFirstClassTextFieldChanged" prefHeight="25.0" prefWidth="45.0" promptText="123" />
+        <TextField fx:id="secondClassTextField" layoutX="400.0" layoutY="90.0" onKeyReleased="#onSecondClassTextFieldChanged" prefHeight="25.0" prefWidth="45.0" promptText="123" />
+        <TextField fx:id="thirdClassTextField" layoutX="460.0" layoutY="90.0" onKeyReleased="#onThirdClassTextFieldChanged" prefHeight="25.0" prefWidth="45.0" promptText="123" />
+        <Button fx:id="cancelButton" layoutX="460.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#onCancelButtonClicked" text="Cancel" />
+        <Button fx:id="addButton" layoutX="400.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClicked" text="Add" />
+        <Label layoutX="34.0" layoutY="64.0" text="Destination" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="144.0" layoutY="64.0" text="Train number">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="255.0" layoutY="64.0" text="Dept Hour" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="353.0" layoutY="64.0" text="1st" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="410.0" layoutY="64.0" text="2nd" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="472.0" layoutY="64.0" text="3rd" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="405.0" layoutY="40.0" text="Seats">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </children>
+</Pane>

@@ -5,8 +5,11 @@ import org.bson.types.ObjectId;
 import ssu.edu.ua.traininfodms.Domain.AppTrainInfo;
 import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mapper {
-    public static TrainInfoDto MapToTrainInfoDto(AppTrainInfo appTrain){
+    public static TrainInfoDto MapToTrainInfoDto(AppTrainInfo appTrain) {
         TrainInfoDto trainDto = new TrainInfoDto();
 
         trainDto.setId(appTrain.getId());
@@ -18,7 +21,15 @@ public class Mapper {
         return trainDto;
     }
 
-    public static Document MapToDocument(AppTrainInfo appTrain){
+    public static List<TrainInfoDto> MapToTrainInfoDtoList(List<AppTrainInfo> appTrainInfoList) {
+        ArrayList<TrainInfoDto> infoDtoList = new ArrayList<>();
+        for (AppTrainInfo appTrainInfo : appTrainInfoList) {
+            infoDtoList.add(MapToTrainInfoDto(appTrainInfo));
+        }
+        return infoDtoList;
+    }
+
+    public static Document MapToDocument(AppTrainInfo appTrain) {
 
         return new Document(DocumentKeys.id, new ObjectId())
                 .append(DocumentKeys.destination, appTrain.getDestination())
@@ -30,7 +41,7 @@ public class Mapper {
                         .append(DocumentKeys.SeatsKeys.thirdClass, appTrain.getSeats().getThirdClass()));
     }
 
-    public static AppTrainInfo MapToAppTrainInfo(Document document){
+    public static AppTrainInfo MapToAppTrainInfo(Document document) {
         AppTrainInfo appTrainInfo = new AppTrainInfo();
 
         appTrainInfo.setId((ObjectId) document.get(DocumentKeys.id));

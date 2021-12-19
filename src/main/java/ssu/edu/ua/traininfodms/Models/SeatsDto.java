@@ -4,47 +4,47 @@ import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
 
 public class SeatsDto {
     public SeatsDto(Seats seats) {
-        FirstClass = seats.getFirstClass();
-        SecondClass = seats.getSecondClass();
-        ThirdClass = seats.getThirdClass();
+        firstClass = seats.getFirstClass();
+        secondClass = seats.getSecondClass();
+        thirdClass = seats.getThirdClass();
 
-        All = FirstClass + SecondClass + ThirdClass;
+        all = firstClass + secondClass + thirdClass;
     }
 
-    private int All;
-    private int FirstClass;
-    private int SecondClass;
-    private int ThirdClass;
+    private int all;
+    private int firstClass;
+    private int secondClass;
+    private int thirdClass;
 
     public int getFirstClass() {
-        return FirstClass;
+        return firstClass;
     }
 
     public void setFirstClass(int firstClass) {
-        FirstClass = firstClass;
+        this.firstClass = firstClass;
     }
 
     public int getSecondClass() {
-        return SecondClass;
+        return secondClass;
     }
 
     public void setSecondClass(int secondClass) {
-        SecondClass = secondClass;
+        this.secondClass = secondClass;
     }
 
     public int getThirdClass() {
-        return ThirdClass;
+        return thirdClass;
     }
 
     public void setThirdClass(int thirdClass) {
-        ThirdClass = thirdClass;
+        this.thirdClass = thirdClass;
     }
 
     public int getAll() {
-        return All;
+        return all;
     }
 
     public void setAll(int all) {
-        All = all;
+        this.all = all;
     }
 }

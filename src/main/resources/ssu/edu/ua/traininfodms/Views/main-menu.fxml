@@ -15,23 +15,23 @@
    <children>
       <AnchorPane layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="800.0" prefHeight="400.0" prefWidth="800.0">
          <children>
-            <Button layoutX="687.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#onEditTrainButtonClicked" prefHeight="30.0" prefWidth="100.0" text="Edit">
+            <Button id="editButton" fx:id="editButton" layoutX="687.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#onEditTrainButtonClicked" prefHeight="30.0" prefWidth="100.0" text="Edit">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="687.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#onAddTrainButtonClicked" prefWidth="100.0" text="Add">
+            <Button id="addButton" fx:id="addButton" layoutX="687.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#onAddTrainButtonClicked" prefWidth="100.0" text="Add">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="687.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#onDeleteTrainButtonClicked" prefWidth="100.0" text="Delete">
+            <Button id="deleteButton" fx:id="deleteButton" layoutX="687.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#onDeleteTrainButtonClicked" prefWidth="100.0" text="Delete">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <CheckBox layoutX="637.0" layoutY="192.0" mnemonicParsing="false" onInputMethodTextChanged="#onGeneralSeatsStatusChanged" text="General seats" />
-            <TextField layoutX="637.0" layoutY="83.0" onInputMethodTextChanged="#onDestinationInputTextChanged" promptText="Enter destination city" />
+            <CheckBox id="seatsCheckBox" fx:id="seatsCheckBox" layoutX="637.0" layoutY="192.0" mnemonicParsing="false" onMouseReleased="#onGeneralSeatsStatusChanged" text="General seats"/>
+            <TextField id="destTextField" fx:id="destTextField" layoutX="637.0" layoutY="83.0" onKeyReleased="#onDestinationInputTextChanged" promptText="Enter destination city" />
             <Label alignment="CENTER" layoutX="637.0" layoutY="17.0" prefHeight="20.0" prefWidth="150.0" text="Search filters" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
@@ -47,23 +47,28 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Slider blockIncrement="0.5" layoutX="637.0" layoutY="152.0" majorTickUnit="1.0" max="24.0" minorTickCount="0" onInputMethodTextChanged="#onHoursSliderValueChanged" />
-            <TableView id="general-table-view" fixedCellSize="25.0" layoutX="8.0" layoutY="8.0" prefHeight="385.0" prefWidth="615.0">
+            <Slider id="hourSlider" fx:id="hourSlider" blockIncrement="1.0" layoutX="637.0" layoutY="152.0" majorTickUnit="1.0" max="24.0" minorTickCount="1" onMouseReleased="#onHoursSliderValueChanged" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <TableView id="generalTableView" fx:id="generalTableView" fixedCellSize="25.0" layoutX="8.0" layoutY="8.0" prefHeight="385.0" prefWidth="615.0">
               <columns>
-                <TableColumn prefWidth="73.0" text="ID" />
-                <TableColumn prefWidth="180.0" text="Destination" />
-                  <TableColumn prefWidth="88.0" text="Train No." />
-                  <TableColumn prefWidth="73.0" text="Dept Hour" />
-                  <TableColumn maxWidth="180.0" minWidth="180.0" prefWidth="180.0" text="Seats">
+                <TableColumn id="id" fx:id="idCol" prefWidth="152.800048828125" text="ID" />
+                <TableColumn id="destination" fx:id="destCol" prefWidth="123.99993896484375" text="Destination" />
+                  <TableColumn id="trainNumber" fx:id="trainNumberCol" prefWidth="88.7999267578125" text="Train No." />
+                  <TableColumn id="deptHour" fx:id="deptHourCol" prefWidth="65.60003662109375" text="Dept Hour" />
+                  <TableColumn id="seats" fx:id="seatsCol" maxWidth="198.4000122070313" minWidth="99.20001220703125" prefWidth="168.79998779296875" text="Seats">
                      <columns>
-                        <TableColumn maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="All" />
-                        <TableColumn maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="1st" />
-                        <TableColumn maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="2nd" />
-                        <TableColumn maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="3rd" />
+                        <TableColumn id="all" fx:id="allCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="All" />
+                        <TableColumn id="firstClass" fx:id="firstClassCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="1st" />
+                        <TableColumn id="secondClass" fx:id="secondClassCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="2nd" />
+                        <TableColumn id="thirdClass" fx:id="thirdClassCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="3rd" />
                      </columns>
                   </TableColumn>
               </columns>
             </TableView>
+            <Button fx:id="refreshButton" layoutX="686.0" layoutY="220.0" mnemonicParsing="false" onKeyReleased="#onRefreshButtonClicked" prefWidth="100.0" text="Refresh">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

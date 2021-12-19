@@ -8,10 +8,13 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import ssu.edu.ua.traininfodms.Domain.AppTrainInfo;
 import ssu.edu.ua.traininfodms.Domain.ITrainRepository;
+import ssu.edu.ua.traininfodms.Models.DocumentKeys;
 import ssu.edu.ua.traininfodms.Models.Mapper;
+import ssu.edu.ua.traininfodms.Models.SearchRequestDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class MongoDbTrainRepository implements ITrainRepository {
     private final MongoCollection<Document> collection = MongoDbContext.getCollection();
@@ -25,9 +28,25 @@ public class MongoDbTrainRepository implements ITrainRepository {
     }
 
     @Override
-    public ArrayList<AppTrainInfo> getTrainInfoList() {
+    public ArrayList<AppTrainInfo> getTrainInfoList(SearchRequestDto requestDto) {
         ArrayList<Document> list = new ArrayList<>();
-        collection.aggregate(List.of(Aggregates.match(Filters.empty()))).into(list);
+
+        var destinationFilter = Filters.regex(DocumentKeys.destination, ".*" + Pattern.quote(requestDto.getDestination()) + ".*");
+        var deptHourFilter = Filters.gte(DocumentKeys.deptHour, requestDto.getDeptHour());
+        var generalSeatsFilter = Filters.and(
+                Filters.eq(DocumentKeys.seats + "." + DocumentKeys.SeatsKeys.firstClass, 0),
+                Filters.eq(DocumentKeys.seats + "." + DocumentKeys.SeatsKeys.secondClass, 0),
+                Filters.eq(DocumentKeys.seats + "." + DocumentKeys.SeatsKeys.thirdClass, 0)
+        );
+        var emptyFilter = Filters.empty();
+
+        var combineFilter = Filters.and(
+                destinationFilter,
+                deptHourFilter,
+                requestDto.isGeneralSeats() ? emptyFilter : generalSeatsFilter
+        );
+
+        collection.aggregate(List.of(Aggregates.match(combineFilter))).into(list);
 
         ArrayList<AppTrainInfo> appTrainInfos = new ArrayList<>();
         for (Document document : list) {

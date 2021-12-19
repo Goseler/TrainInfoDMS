@@ -3,59 +3,56 @@ package ssu.edu.ua.traininfodms.Models;
 import org.bson.types.ObjectId;
 import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
 
-import java.util.UUID;
-
 public class TrainInfoDto {
-    private ObjectId Id;
-    private String Destination;
-    private String TrainNumber;
-    private int DeptHour;
-    private SeatsDto Seats;
+    private ObjectId id;
+    private String destination;
+    private String trainNumber;
+    private int deptHour;
+    private SeatsDto seats;
 
     public TrainInfoDto(){}
 
     public TrainInfoDto (ObjectId id, String destination, String trainNumber, int deptHour, SeatsDto seatsDto){
-        Id = id;
-        Destination = destination;
-        TrainNumber = trainNumber;
-        DeptHour = deptHour;
-        Seats = seatsDto;
+        this.id = id;
+        this.destination = destination;
+        this.trainNumber = trainNumber;
+        this.deptHour = deptHour;
+        seats = seatsDto;
     }
 
     // Getters and Setters
     public ObjectId getId() {
-        return Id;
+        return id;
     }
     public void setId(ObjectId id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getDestination() {
-        return Destination;
+        return destination;
     }
     public void setDestination(String destination) {
-        Destination = destination;
+        this.destination = destination;
     }
 
     public String getTrainNumber() {
-        return TrainNumber;
+        return trainNumber;
     }
-
     public void setTrainNumber(String trainNumber) {
-        TrainNumber = trainNumber;
+        this.trainNumber = trainNumber;
     }
 
     public int getDeptHour() {
-        return DeptHour;
+        return deptHour;
     }
     public void setDeptHour(int deptHour) {
-        DeptHour = deptHour;
+        this.deptHour = deptHour;
     }
 
     public SeatsDto getSeats() {
-        return Seats;
+        return seats;
     }
     public void setSeats(Seats seats) {
-        Seats = new SeatsDto(seats);
+        this.seats = new SeatsDto(seats);
     }
 }
