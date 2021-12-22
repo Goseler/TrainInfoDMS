@@ -56,7 +56,8 @@ public class MainMenuController {
     @FXML
     private TextField destTextField;
 
-    public MainMenuController() { }
+    public MainMenuController() {
+    }
 
     @FXML
     void initialize() {
@@ -95,6 +96,7 @@ public class MainMenuController {
         if (dto == null) {
             warningAlert.contentTextProperty().setValue("Please, choose row to edit");
             warningAlert.show();
+            return;
         }
 
         try {
@@ -143,9 +145,10 @@ public class MainMenuController {
         refreshTableViewData();
     }
 
-    private void refreshTableViewData() {
+    public void refreshTableViewData() {
         list = _trainRepository.getTrainInfoList(searchRequestDto);
         listDto = Mapper.MapToTrainInfoDtoList(list);
+        generalTableView.getItems().clear();
         generalTableView.setItems(FXCollections.observableList(listDto));
     }
 
@@ -172,7 +175,7 @@ public class MainMenuController {
         this._trainRepository = trainRepository;
     }
 
-    public void onRefreshButtonClicked(KeyEvent keyEvent) {
+    public void onRefreshButtonClicked(MouseEvent keyEvent) {
         refreshTableViewData();
     }
 }

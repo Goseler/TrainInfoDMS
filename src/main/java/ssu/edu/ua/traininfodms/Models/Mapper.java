@@ -30,8 +30,9 @@ public class Mapper {
     }
 
     public static Document MapToDocument(AppTrainInfo appTrain) {
+        ObjectId id = appTrain.getId();
 
-        return new Document(DocumentKeys.id, new ObjectId())
+        return new Document(DocumentKeys.id, appTrain.getId() == null ? new ObjectId() : id)
                 .append(DocumentKeys.destination, appTrain.getDestination())
                 .append(DocumentKeys.trainNumber, appTrain.getTrainNumber())
                 .append(DocumentKeys.deptHour, appTrain.getDeptHour())

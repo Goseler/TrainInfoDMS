@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ssu.edu.ua.traininfodms.Domain.AppTrainInfo;
 import ssu.edu.ua.traininfodms.Domain.ITrainRepository;
+import ssu.edu.ua.traininfodms.Domain.Shared.Seats;
 
 public class AddMenuController {
     public TextField deptHourTextField;
@@ -49,14 +50,27 @@ public class AddMenuController {
     }
 
     public void onDeptHourTextFieldChanged(KeyEvent keyEvent) {
+        appTrainInfo.setDeptHour(Integer.parseInt(deptHourTextField.getText()));
     }
 
     public void onFirstClassTextFieldChanged(KeyEvent keyEvent) {
+        Seats seats = appTrainInfo.getSeats();
+        seats = seats != null ? seats : new Seats();
+        seats.setFirstClass(Integer.parseInt(firstClassTextField.getText()));
+        appTrainInfo.setSeats(seats);
     }
 
     public void onSecondClassTextFieldChanged(KeyEvent keyEvent) {
+        Seats seats = appTrainInfo.getSeats();
+        seats = seats != null ? seats : new Seats();
+        seats.setSecondClass(Integer.parseInt(secondClassTextField.getText()));
+        appTrainInfo.setSeats(seats);
     }
 
     public void onThirdClassTextFieldChanged(KeyEvent keyEvent) {
+        Seats seats = appTrainInfo.getSeats();
+        seats = seats != null ? seats : new Seats();
+        seats.setThirdClass(Integer.parseInt(thirdClassTextField.getText()));
+        appTrainInfo.setSeats(seats);
     }
 }
